@@ -31,7 +31,7 @@ def crear_grafico_mapa(df):
         visible=False,
         scope="south america",
         center={"lat": -14.2350, "lon": -51.9253},
-        projection_scale=1.5,
+        projection_scale=1.6,
         showland=False,
         showcountries=False,
         showcoastlines=False,
@@ -39,8 +39,8 @@ def crear_grafico_mapa(df):
         showsubunits=False
     )
     fig_mapa.update_layout(
-        height=450,
-        margin=dict(l=0, r=0, t=100, b=0),
+        height=420,
+        margin=dict(l=0, r=10, t=100, b=0),
         coloraxis_showscale=True,
         paper_bgcolor='rgba(0,0,0,0)',
         geo=dict(

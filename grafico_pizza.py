@@ -24,12 +24,17 @@ def crear_grafico_pizza(df):
         color_discrete_sequence=px.colors.sequential.tempo_r
     )
 
+    # Encontrar el índice del vendedor con el mayor porcentaje
+    max_index = vendedores.tail(5)['total_ventas'].idxmax()
+
     pastel.update_traces(
         textposition='inside',
         textinfo='percent+label',
         hoverinfo='label+percent+value',
         textfont_size=13,
-        marker=dict(line=dict(color='#000000', width=2))
+        hovertemplate='%{label}: %{value:,.0f}'.replace(',', '.') + '<br>Percent: %{percent:.1%}<extra></extra>',
+        marker=dict(line=dict(color='#000000', width=2)),
+        pull=[0.1 if i == max_index else 0 for i in range(len(vendedores.head(5)))]
     )
 
     # Ajustar los colores de las porciones del gráfico
@@ -40,6 +45,7 @@ def crear_grafico_pizza(df):
         uniformtext_mode='hide',
         annotations=[dict(text='', x=0.5, y=0.5, font_size=20, showarrow=False)],
         plot_bgcolor='black',
+        margin=dict(l=0, r=10, t=155, b=0)
     )
     
     return pastel

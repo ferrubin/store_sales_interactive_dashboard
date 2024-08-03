@@ -28,9 +28,9 @@ def crear_grafico_barras(df):
     # Formato de texto de las barras
     grafico_barras.update_traces(
         texttemplate='%{text:.3s}', 
-        textposition='outside'
+        textposition='outside',
     )
-    
+
     # Formato de los ejes
     grafico_barras.update_yaxes(tickformat=",.1s")
     

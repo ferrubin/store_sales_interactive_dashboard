@@ -38,17 +38,14 @@ def crear_grafico_snb(df):
     # Reemplazar nombres de marcas
     df_producto_mas_rentable['marca'] = df_producto_mas_rentable['marca']
 
-
-
+    # Definir colores personalizados para cada marca
     colores_personalizados = {
-        'marca'[0]: '#6481EC',
-        'marca'[1]: '#3354D0',
-        'marca'[2]: '#1F3CAA',
-        'marca'[3]: '#081E71',
-        'marca'[4]: '#081E71'
-    }
-    
-
+    'Marca A': '#00BFFF',  # Deep Sky Blue
+    'Marca B': '#1E90FF',  # Dodger Blue
+    'Marca C': '#87CEFA',  # Light Sky Blue
+    'Marca D': '#ADD8E6',  # Light Blue
+    'Marca E': '#B0E0E6'   # Powder Blue
+}
     
     # Crear el gráfico Sunburst
     fig = px.sunburst(
@@ -56,12 +53,16 @@ def crear_grafico_snb(df):
         path=['ventas_netas_totales_fmt', 'marca', 'condicion', 'producto'],
         values='ingresos_netos',
         color='marca',
-        color_discrete_map=colores_personalizados,
+        color_discrete_sequence=px.colors.sequential.algae_r,
         title='VENTAS POR MARCA Y PRODUCTO',
     )
 
-    fig.update_traces(insidetextorientation='auto', 
-            textfont_size=12,
-            marker=dict(colors=df_producto_mas_rentable['marca'].map(colores_personalizados)))
+    fig.update_traces(
+        insidetextorientation='auto', 
+        textfont_size=12
+    )
+    fig.update_layout(
+        margin=dict(l=0, r=10, t=155, b=0)
+    )
     
     return fig

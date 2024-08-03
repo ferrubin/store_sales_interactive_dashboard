@@ -116,6 +116,7 @@ with col2:
     st.plotly_chart(grafico_lineas, use_container_width=True)
     st.plotly_chart(grafico_barras, use_container_width=True)
     st.plotly_chart(grafico_arbol, use_container_width=True)
+    
 
 
 #st.dataframe(df_final)
